@@ -5,13 +5,29 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Atenas</title>
 
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="output.css">
+        <link rel="stylesheet" href="css/style.css" type="text/css">
+        <link rel="stylesheet" href="css/output.css" type="text/css">
 
         <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon">
+
         <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+        <script src="js/send.js"></script>
+        <script src="js/util.js"></script>
     </head>
-    <body class="bg-background">
+    <body class="bg-background"
+        :class="searchMode ? 'overflow-hidden' : 'overflow-auto'"
+        x-data="
+            {
+                searchMode: false,
+                books: [],
+            }
+        ", x-init="
+            books = await getBooks();
+        ">
         <header class="w-full h-screen-90 fixed top-0 left-0 z-[-1]">
             <!-- Image -->
             <div class="w-full h-full bg-lib brightness-75"></div>
@@ -43,18 +59,60 @@
                     Descubra o que a Grécia tem a oferecer, a um clique de distância.
                 </p>
             </div>
-
-            <!-- Search -->
-            <div
-                class="
-                    w-1/2 h-14 cursor-pointer bg-white rounded-full absolute
-                    left-1/2 -translate-x-1/2 top-105 flex justify-center items-center
-                    hover:brightness-90 transition-[background, brightness] duration-300
-                ">
-                <img class="mr-3 w-7" src="assets/icons/search.svg" alt="Search">
-                <span class="font-montserrat">Pesquisar</span>
-            </div>
         </header>
+
+        <div x-data="
+            {
+                searchText: '',
+                get getBooks() {
+                    return books.filter(
+                        b => b.name.toLowerCase().includes(this.searchText.toLowerCase()) ||
+                            b.author.toLowerCase().includes(this.searchText.toLowerCase()) ||
+                            b.subject.toLowerCase().includes(this.searchText.toLowerCase())
+                    );
+                }
+            }
+            " @keyup.escape="
+                searchMode = false;
+                searchText = '';
+            ">
+            <!-- Search Bg -->
+            <div x-show="searchMode == true" class="absolute top-0 left-0 w-full h-screen bg-black/30" @click="searchMode = false; searchText = '';"></div>
+
+           <!-- Search Box -->
+           <div
+               class="
+                   w-1/2 h-14 cursor-pointer bg-white rounded-full absolute
+                   left-1/2 -translate-x-1/2 flex justify-center items-center
+                   hover:brightness-90 transition-[background, brightness] duration-300
+               "
+               :class="searchMode ? 'top-20' : 'top-105'"
+               @click="searchMode = true; window.scrollTo(0, 0); $nextTick(() => $refs.searchInput.focus())">
+               <div class="flex-1 flex justify-center items-center" x-show="searchMode">
+                    <input x-ref="searchInput" x-model="searchText" class="flex-1 border-none outline-none bg-opacity-0 p-4 rounded-full font-montserrat" type="text" />
+               </div>
+               <!-- else -->
+               <div class="flex-1 flex justify-center items-center" x-show="!searchMode">
+                    <img class="mr-3 w-7" src="assets/icons/search.svg" alt="Search">
+                    <span class="font-montserrat">Pesquisar</span>
+               </div>
+           </div>
+
+           <!-- Search Results -->
+           <div
+            x-show="searchMode && searchText !== ''"
+            class="absolute left-1/2 top-40 -translate-x-1/2 bg-white rounded-3xl w-1/2 h-96 p-4">
+                <template x-for="book in getBooks" :key="book.name">
+                    <a href
+                        class="bg-black/10 p-4 rounded-lg mb-4 block w-full
+                        hover:bg-black/20 transition-[background] duration-300">
+                        <h1 class="font-bold text-xl" x-text="book.name"></h1>
+                        <h2 class="text-lg" x-text="book.author"></h2>
+                        <p class="text-sm" x-text="book.subject"></p>
+                    </a>
+                </template>
+           </div>
+        </div>
 
         <main class="w-full mt-[90vh] pb-6 bg-background">
             <!-- Os melhores títulos da Grécia -->
@@ -63,23 +121,28 @@
                 <p class="mt-[-1rem]">Livros selecionados com cuidado, com assuntos variados desde a filosofia antiga até à mitologia grega.</p>
 
                 <div class="w-full mt-10 flex justify-evenly items-center">
-                    <div class="bg-background-darker p-4 rounded-lg w-40 h-40" title="Antígona, de Sófocles">
+                    <div class="bg-background-darker p-4 rounded-lg w-40 h-40 hover:brightness-95
+                    transition-[background, brightness] duration-300" title="Antígona, de Sófocles">
                         <img class="w-full h-full" src="assets/books/Antigona.png" alt="Antigona">
                     </div>
 
-                    <div class="bg-background-darker p-4 rounded-lg w-40 h-40" title="Apologia de Sócrates, de Platão">
+                    <div class="bg-background-darker p-4 rounded-lg w-40 h-40 hover:brightness-95
+                    transition-[background, brightness] duration-300" title="Apologia de Sócrates, de Platão">
                         <img class="w-full h-full" src="assets/books/Apologia.png" alt="Apologia">
                     </div>
 
-                    <div class="bg-background-darker p-4 rounded-lg w-40 h-40" title="Ilíada, de Homero">
+                    <div class="bg-background-darker p-4 rounded-lg w-40 h-40 hover:brightness-95
+                    transition-[background, brightness] duration-300" title="Ilíada, de Homero">
                         <img class="w-full h-full" src="assets/books/Iliada.png" alt="Iliada">
                     </div>
 
-                    <div class="bg-background-darker p-4 rounded-lg w-40 h-40" title="Metafísica, de Aristóteles">
+                    <div class="bg-background-darker p-4 rounded-lg w-40 h-40 hover:brightness-95
+                    transition-[background, brightness] duration-300" title="Metafísica, de Aristóteles">
                         <img class="w-full h-full" src="assets/books/Metafisica.png" alt="Metafísica">
                     </div>
 
-                    <div class="bg-background-darker p-4 rounded-lg w-40 h-40" title="Odisseia, de Homero">
+                    <div class="bg-background-darker p-4 rounded-lg w-40 h-40 hover:brightness-95
+                    transition-[background, brightness] duration-300" title="Odisseia, de Homero">
                         <img class="w-full h-full" src="assets/books/Odisseia.png" alt="Odisseia">
                     </div>
                 </div>

@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Livro - Metafísica • Atenas</title>
+        <title>Livro - <%= book.name %> • Atenas</title>
 
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="output.css">
@@ -23,10 +23,10 @@
             </div>
 
             <div class="w-1/4 bg-black/50 p-4 rounded-xl text-white flex justify-start items-center flex-col">
-                <img class="w-full h-full mb-4" src="assets/books/Metafisica.png" alt="Metafisica">
+                <img class="w-full h-full mb-4" src="assets/books/<%= book.fileName %>.png" alt="Metafisica">
 
-                <h1 class="font-bold text-3xl">Metafísica</h1>
-                <h2 class="text-lg">Aristóteles</h2>
+                <h1 class="font-bold text-3xl"><%= book.name %></h1>
+                <h2 class="text-lg"><%= book.author %></h2>
 
                 <div class="mt-1">
                     ★★★★★
@@ -42,22 +42,22 @@
                 <div class="w-2/3 mb-4">
                     <p class="text-lg">
                         Nome:
-                        <span class="font-bold">Metafísica</span>
+                        <span class="font-bold"><%= book.name %></span>
                     </p>
 
                     <p class="text-lg">
                         Autor:
-                        <span class="font-bold">Aristóteles</span>
+                        <span class="font-bold"><%= book.author %></span>
                     </p>
 
                     <p class="text-lg">
                         Assunto:
-                        <span class="font-bold">Filosofia</span>
+                        <span class="font-bold"><%= book.subject %></span>
                     </p>
 
                     <p class="text-lg">
                         Data de publicação:
-                        <span class="font-bold">Por volta de 350 a.C.</span>
+                        <span class="font-bold"><%= book.publishDate %></span>
                     </p>
 
                     <p class="text-lg">
@@ -69,19 +69,16 @@
                 <div class="w-2/3 bg-background-darker p-4 rounded-lg">
                     <h3 class="text-sm uppercase tracking-widest font-bold">Resumo</h3>
                     <p class="w-full mt-2">
-                        A obra Metafísica trata dos princípios da realidade sensível que, como a matéria e a forma, 
-                        parecem ser estruturas fundamentais da realidade, dos números e da matemática.
-                        Existe até mesmo um pequeno vocabulário filosófico e uma breve “história da filosofia”, 
-                        mas o ser, a essência, as formas de ser constituem o argumento central do texto.
+                        <%= book.resume %>
                     </p>
 
-                    <h3 class="text-xs uppercase tracking-widest font-bold mt-2">Fonte: Cola da Web</h3>
+                    <h3 class="text-xs uppercase tracking-widest font-bold mt-2">Fonte: <%= book.source %></h3>
                 </div>
 
                 <div class="w-2/3 mt-4 flex justify-start items-center">
                     <img class="w-6 mr-2" src="assets/icons/link.png" alt="Link"></img>
                     <span>Livro em PDF:</span>
-                    <a class="text-sky-700 hover:bg-sky-300/30 ml-1 p-1 rounded-md transition-[background] duration-300" href="assets/pdfs/Metafisica.pdf" target="_blank">Visualizar</a>
+                    <a class="text-sky-700 hover:bg-sky-300/30 ml-1 p-1 rounded-md transition-[background] duration-300" href="assets/pdfs/<%= book.fileName %>.pdf" target="_blank">Visualizar</a>
                 </div>
             </div>
         </main>
