@@ -27,6 +27,13 @@ function setupApiRoutes(app) {
         data.books[bookIndex].quantity++;
         saveToDatabase();
     });
+
+    app.post("/api/save", (req, res) => {
+        const books = req.body.books;
+        
+        data.books = books;
+        saveToDatabase();
+    });
 }
 
 module.exports = setupApiRoutes;

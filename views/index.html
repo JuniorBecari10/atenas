@@ -27,7 +27,7 @@
         ", x-init="
             books = await getBooks();
         ">
-        <header class="w-full h-screen-90 fixed top-0 left-0 z-[-1]">
+        <header x-data="{ showAdminForm: false }" class="w-full h-screen-90 fixed top-0 left-0 z-[-1]">
             <!-- Image -->
             <div class="w-full h-full bg-lib brightness-75"></div>
 
@@ -42,6 +42,51 @@
                     left-7 top-5 absolute text-5xl text-white p-2 rounded-lg w-14 h-14
                     hover:bg-black/10 transition-[background] duration-300 flex justify-center items-center
                 " href title="Retornar à página inicial">A</a>
+
+                <a @click.prevent="showAdminForm = !showAdminForm" class="
+                    right-20 top-2 absolute text-xl text-white p-2 rounded-lg w-14 h-14
+                    hover:bg-black/10 transition-[background] duration-300 flex justify-center items-center
+                " href title="Retornar à página inicial">Administrativo</a>
+
+                <div x-show="showAdminForm" x-transition.scale.top class="
+                    right-5 top-14 absolute text-xl text-white p-4 rounded-lg w-96 h-48 bg-background
+                    flex justify-start items-center flex-col
+                "
+                x-data="{
+                    login: '',
+                    password: '',
+                }">
+                    <input class="
+                        bg-background-darker w-full rounded-lg text-lg text-black p-2
+                        font-montserrat mb-2 border-none outline-none
+                    " x-model="login" placeholder="Login" type="text">
+
+                    <input class="
+                        bg-background-darker w-full rounded-lg text-lg text-black p-2
+                        font-montserrat mb-2 border-none outline-none
+                    " x-model="password" placeholder="Senha" type="password">
+
+                    <button @click.prevent="
+                        if (login === 'admin' && password === 'admin')
+                            window.location.href = 'http://localhost:3000/admin';
+                        else if (login === 'gleison' && password === '1234')
+                            window.location.href = 'http://localhost:3000/worker';
+                        else if (login === 'renato' && password === '1234')
+                            window.location.href = 'http://localhost:3000/professor';
+                        else if (login === 'antonio' && password === '1234')
+                            window.location.href = 'http://localhost:3000/student';
+                        else if (login === 'kayky' && password === '1234')
+                            window.location.href = 'http://localhost:3000/student';
+                        else {
+                            login = '';
+                            password = '';
+                            showAdminForm = false;
+                        }
+                    " class="
+                        bg-aqua w-full rounded-lg text-lg text-white p-2 cursor-pointer
+                        font-montserrat hover:brightness-95 transition-[background, brightness] duration-300
+                    " type="submit">Entrar</button>
+                </div>
 
                 <p class="
                     text-white text-sm tracking-widest font-bold uppercase font-montserrat w-110
@@ -100,7 +145,7 @@
            <!-- Search Results -->
            <div
             x-show="searchMode && searchText !== ''"
-            class="absolute left-1/2 top-40 -translate-x-1/2 bg-white rounded-3xl w-1/2 h-96 p-4">
+            class="absolute left-1/2 top-40 -translate-x-1/2 bg-white rounded-3xl w-1/2 h-96 p-4 overflow-auto">
                 <template x-for="book in getBooks" :key="book.name">
                     <a :href="'/book/' + book.id"
                         class="bg-black/10 p-4 rounded-lg mb-4 block w-full

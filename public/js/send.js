@@ -5,7 +5,7 @@ async function sendGet(endpoint) {
         const response = await axios.get(`http://${API_URL}/api/${endpoint}`);
         return response.data;
     } catch (e) {
-        console.error(JSON.parse(e.request.responseText).message);
+        console.error(e);
     }
 }
 
