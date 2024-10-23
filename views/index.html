@@ -103,7 +103,7 @@
             x-show="searchMode && searchText !== ''"
             class="absolute left-1/2 top-40 -translate-x-1/2 bg-white rounded-3xl w-1/2 h-96 p-4">
                 <template x-for="book in getBooks" :key="book.name">
-                    <a href
+                    <a :href="'/book/' + book.id"
                         class="bg-black/10 p-4 rounded-lg mb-4 block w-full
                         hover:bg-black/20 transition-[background] duration-300">
                         <h1 class="font-bold text-xl" x-text="book.name"></h1>
@@ -173,7 +173,7 @@
         
                             <p class="text-lg">
                                 Data de publicação:
-                                <span class="font-bold">Por volta de 350 a.C.</span>
+                                <span class="font-bold">1 de fevereiro de 2012</span>
                             </p>
         
                             <p class="text-lg">
@@ -189,7 +189,7 @@
                                 mas o ser, a essência, as formas de ser constituem o argumento central do texto.
                             </p>
 
-                            <h3 class="text-xs uppercase tracking-widest font-bold mt-2">Fonte: Cola da Web</h3>
+                            <h3 class="text-xs uppercase tracking-widest font-bold mt-2">Fonte: Book7</h3>
                         </div>
                     </div>
                 </div>
@@ -200,32 +200,32 @@
                 <h1 class="text-xl uppercase tracking-widest font-bold mb-6">Os mais lidos</h1>
 
                 <div class="w-full flex justify-evenly items-center">
-                    <div class="
+                    <a href="/book/metafisica" class="
                         bg-background-darker p-4 rounded-xl text-center hover:brightness-95
                         transition-[background, brightness] duration-300 cursor-pointer
                     ">
                         <img class="w-64 h-64" src="assets/books/Metafisica.png" alt="Metafísica">
                         <h1 class="text-lg font-bold mt-2">Metafísica</h1>
                         <h2>Aristóteles</h2>
-                    </div>
+                    </a>
 
-                    <div class="
+                    <a href="/book/apologia" class="
                         bg-background-darker p-4 rounded-xl text-center hover:brightness-95
                         transition-[background, brightness] duration-300 cursor-pointer
                     ">
                         <img class="w-64 h-64" src="assets/books/Apologia.png" alt="Metafísica">
                         <h1 class="text-lg font-bold mt-2">Apologia de Sócrates</h1>
                         <h2>Platão</h2>
-                    </div>
+                    </a>
 
-                    <div class="
+                    <a href="/book/odisseia" class="
                         bg-background-darker p-4 rounded-xl text-center hover:brightness-95
                         transition-[background, brightness] duration-300 cursor-pointer
                     ">
                         <img class="w-64 h-64" src="assets/books/Odisseia.png" alt="Metafísica">
                         <h1 class="text-lg font-bold mt-2">Odisseia</h1>
                         <h2>Homero</h2>
-                    </div>
+                    </a>
                 </div>
             </div>
         </main>

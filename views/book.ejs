@@ -5,10 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Livro - <%= book.name %> • Atenas</title>
 
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="output.css">
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/output.css">
 
-        <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon">
+        <link rel="shortcut icon" href="/assets/favicon.png" type="image/x-icon">
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
     <body class="bg-background">
@@ -19,11 +19,11 @@
                 <a class="
                     left-7 top-5 absolute text-5xl text-white p-2 rounded-lg w-14 h-14
                     hover:bg-black/10 transition-[background] duration-300 flex justify-center items-center
-                " href="/index.html" title="Retornar à página inicial">A</a>
+                " href="/" title="Retornar à página inicial">A</a>
             </div>
 
             <div class="w-1/4 bg-black/50 p-4 rounded-xl text-white flex justify-start items-center flex-col">
-                <img class="w-full h-full mb-4" src="assets/books/<%= book.fileName %>.png" alt="Metafisica">
+                <img class="w-full h-full mb-4" src="/assets/books/<%= book.fileName %>.png" alt="Metafisica">
 
                 <h1 class="font-bold text-3xl"><%= book.name %></h1>
                 <h2 class="text-lg"><%= book.author %></h2>
@@ -76,9 +76,9 @@
                 </div>
 
                 <div class="w-2/3 mt-4 flex justify-start items-center">
-                    <img class="w-6 mr-2" src="assets/icons/link.png" alt="Link"></img>
+                    <img class="w-6 mr-2" src="/assets/icons/link.png" alt="Link"></img>
                     <span>Livro em PDF:</span>
-                    <a class="text-sky-700 hover:bg-sky-300/30 ml-1 p-1 rounded-md transition-[background] duration-300" href="assets/pdfs/<%= book.fileName %>.pdf" target="_blank">Visualizar</a>
+                    <a class="text-sky-700 hover:bg-sky-300/30 ml-1 p-1 rounded-md transition-[background] duration-300" href="/assets/pdfs/<%= book.fileName %>.pdf" target="_blank">Visualizar</a>
                 </div>
             </div>
         </main>
