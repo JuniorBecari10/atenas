@@ -12,7 +12,6 @@
 
         <script src="https://cdn.tailwindcss.com"></script>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
         <script src="js/send.js"></script>
@@ -89,7 +88,7 @@
                :class="searchMode ? 'top-20' : 'top-105'"
                @click="searchMode = true; window.scrollTo(0, 0); $nextTick(() => $refs.searchInput.focus())">
                <div class="flex-1 flex justify-center items-center" x-show="searchMode">
-                    <input x-ref="searchInput" x-model="searchText" class="flex-1 border-none outline-none bg-opacity-0 p-4 rounded-full font-montserrat" type="text" />
+                    <input x-ref="searchInput" placeholder="Comece a digitar" x-model="searchText" class="flex-1 border-none outline-none bg-opacity-0 p-4 rounded-full font-montserrat" type="text" />
                </div>
                <!-- else -->
                <div class="flex-1 flex justify-center items-center" x-show="!searchMode">

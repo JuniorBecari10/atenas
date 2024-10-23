@@ -10,7 +10,8 @@ let data = {
             source: 'Amazon',
             publishDate: '1 de janeiro de 2006',
             fileName: 'Antigona',
-            id: "antigona"
+            id: "antigona",
+            quantity: 10,
         },
         {
             name: 'Apologia de Sócrates',
@@ -20,17 +21,19 @@ let data = {
             source: 'Book7',
             publishDate: '24 de junho de 2019',
             fileName: 'Apologia',
-            id: "apologia"
+            id: "apologia",
+            quantity: 10,
         },
         {
             name: 'Manual de Epicteto',
             author: 'Epicteto',
             subject: 'Filosofia',
-            resume: 'Epicteto, um dos principais representantes do estoicismo , deixou em seu legado ensinamentos éticos com preceitos práticos para questões atemporais sobre a arte de viver melhor. Este sucinto e primoroso Manual filosófico, compilado por seu discípulo Flávio Arriano e apresentado aqui em versão bilíngue (grego-português) , reúne 53 aforismos de teor ético que expressam a preocupação fundamental de Epicteto: a conduta e o comportamento do ser humano em sociedade, e seu reflexo na manifestação da tão sonhada felicidade.',
+            resume: 'Epicteto, um dos principais representantes do estoicismo, deixou em seu legado ensinamentos éticos com preceitos práticos para questões atemporais sobre a arte de viver melhor. Este sucinto e primoroso Manual filosófico, compilado por seu discípulo Flávio Arriano e apresentado aqui em versão bilíngue (grego-português) , reúne 53 aforismos de teor ético que expressam a preocupação fundamental de Epicteto: a conduta e o comportamento do ser humano em sociedade, e seu reflexo na manifestação da tão sonhada felicidade.',
             source: 'Skeelo',
             publishDate: 'Fevereiro de 2021',
             fileName: 'ManualEpicteto',
-            id: "manual-epicteto"
+            id: "manual-epicteto",
+            quantity: 10,
         }, {
             name: 'Ilíada',
             author: 'Homero',
@@ -39,7 +42,8 @@ let data = {
             source: 'Amazon',
             publishDate: '27 de outubro de 2020',
             fileName: 'Iliada',
-            id: "iliada"
+            id: "iliada",
+            quantity: 10,
         },
         {
             name: 'Metafísica',
@@ -49,7 +53,8 @@ let data = {
             source: 'Book7',
             publishDate: '1 de fevereiro de 2012',
             fileName: 'Metafisica',
-            id: "metafisica"
+            id: "metafisica",
+            quantity: 10,
         },
          {
             name: 'Origens da Mitologia',
@@ -59,7 +64,8 @@ let data = {
             source: 'Amazon',
             publishDate: '6 de julho de 2022',
             fileName: 'OrigensMitologia',
-            id: "origens-mitologia"
+            id: "origens-mitologia",
+            quantity: 10,
         },
          {
             name: 'Essencial da Mitologia',
@@ -69,7 +75,8 @@ let data = {
             source: 'Amazon',
             publishDate: '30 de junho de 2018',
             fileName: 'Mitologia',
-            id: "essencial-mitologia"
+            id: "essencial-mitologia",
+            quantity: 10,
         },
         {
             name: 'A Odisseia',
@@ -79,7 +86,8 @@ let data = {
             source: 'Skeelo',
             publishDate: '5 de outubro de 2020',
             fileName: 'Odisseia',
-            id: "odisseia"
+            id: "odisseia",
+            quantity: 10,
         },
         {
             name: 'Política',
@@ -89,7 +97,8 @@ let data = {
             source: 'Skeelo',
             publishDate: '1 de fevereiro 2019',
             fileName: 'Politica',
-            id: "politica"
+            id: "politica",
+            quantity: 10,
         },
         {
             name: 'Os Pré-socráticos',
@@ -99,7 +108,8 @@ let data = {
             source: 'Amazon',
             publishDate: '1 de janeiro de 1996',
             fileName: 'PreSocraticos',
-            id: "pre-socraticos"
+            id: "pre-socraticos",
+            quantity: 10,
         },
     ],
 };

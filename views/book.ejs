@@ -9,7 +9,10 @@
         <link rel="stylesheet" href="/css/output.css">
 
         <link rel="shortcut icon" href="/assets/favicon.png" type="image/x-icon">
+        
         <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     </head>
     <body class="bg-background">
         <header class="w-full h-[90vh] fixed top-0 left-0 flex justify-center items-center">
@@ -64,6 +67,11 @@
                         Classificação:
                         <span class="font-bold">★★★★★</span>
                     </p>
+
+                    <p class="text-lg">
+                        Número de exemplares:
+                        <span class="font-bold"><%= book.quantity %></span>
+                    </p>
                 </div>
                 
                 <div class="w-2/3 bg-background-darker p-4 rounded-lg">
@@ -79,6 +87,38 @@
                     <img class="w-6 mr-2" src="/assets/icons/link.png" alt="Link"></img>
                     <span>Livro em PDF:</span>
                     <a class="text-sky-700 hover:bg-sky-300/30 ml-1 p-1 rounded-md transition-[background] duration-300" href="/assets/pdfs/<%= book.fileName %>.pdf" target="_blank">Visualizar</a>
+                </div>
+
+                <div class="w-2/3 mt-4 flex justify-start items-center">
+                    <a @click="
+                        (async () => {
+                            try {
+                                await axios.post('http://localhost:3000/api/borrow', {
+                                    book: '<%= book.id %>'
+                                });
+                            } catch (error) {
+                                console.error('Error borrowing book:', error);
+                            }
+                        })();
+                    "
+                    class="
+                        bg-background-darker px-2 py-1 rounded-lg w-fit mr-2
+                        hover:brightness-95 transition-[background, brightness] duration-300
+                    " href>Pegar emprestado</a>
+                    <a @click="
+                        (async () => {
+                            try {
+                                await axios.post('http://localhost:3000/api/return', {
+                                    book: '<%= book.id %>'
+                                });
+                            } catch (error) {
+                                console.error('Error borrowing book:', error);
+                            }
+                        })();
+                " class="
+                        bg-background-darker px-2 py-1 rounded-lg w-fit
+                        hover:brightness-95 transition-[background, brightness] duration-300
+                    " href>Devolver</a>
                 </div>
             </div>
         </main>
